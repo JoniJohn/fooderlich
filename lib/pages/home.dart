@@ -23,6 +23,23 @@ class _HomeState extends State<Home> {
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor:
+              Theme.of(context).textSelectionTheme.selectionColor,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard),
+              label: 'Card',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard),
+              label: 'Card2',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard),
+              label: 'Card3',
+            ),
+          ]),
     );
   }
 }
