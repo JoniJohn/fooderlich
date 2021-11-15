@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/utils/fooderlich_theme.dart';
+import 'package:fooderlich/widgets/circle_image.dart';
 
 class AuthorCard extends StatelessWidget {
   const AuthorCard(
@@ -14,11 +16,43 @@ class AuthorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Replace return container
     return Container(
       padding: const EdgeInsets.all(16),
       child: Row(
-        children: const [],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CircleImage(
+                imageProvider: imageProvider,
+                imageRadius: 28,
+              ),
+              const SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    authorName,
+                    style: FooderLichTheme.lightTextTheme.headline2,
+                  ),
+                  Text(
+                    title,
+                    style: FooderLichTheme.lightTextTheme.headline3,
+                  )
+                ],
+              )
+            ],
+          ),
+          IconButton(
+            onPressed: () {
+              const snackBar = SnackBar(content: Text('Favorite Pressed'));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            icon: const Icon(Icons.favorite_border),
+            iconSize: 30,
+            color: Colors.grey[400],
+          )
+        ],
       ),
     );
   }
