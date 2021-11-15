@@ -14,7 +14,6 @@ class _HomeState extends State<Home> {
 
   static List<Widget> pages = <Widget>[
     const Card1(),
-    // TODO: replace with card2
     const Card2(),
     // TODO: replace with card3
     Container(
