@@ -63,7 +63,8 @@ class Card3 extends StatelessWidget {
                   ),
                   backgroundColor: Colors.black.withOpacity(0.7),
                   onDeleted: () {
-                    print('delete');
+                    const snackBar = SnackBar(content: Text('Healthy Pressed'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                 ),
                 Chip(
@@ -73,7 +74,8 @@ class Card3 extends StatelessWidget {
                   ),
                   backgroundColor: Colors.black.withOpacity(0.7),
                   onDeleted: () {
-                    print('delete');
+                    const snackBar = SnackBar(content: Text('Vegan Pressed'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                 ),
                 Chip(
