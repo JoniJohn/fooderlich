@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/utils/fooderlich_theme.dart';
 import 'package:fooderlich/widgets/circle_image.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   const AuthorCard(
       {Key? key,
       required this.authorName,
@@ -15,6 +15,13 @@ class AuthorCard extends StatelessWidget {
   final ImageProvider? imageProvider;
 
   @override
+  State<AuthorCard> createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
+  bool _isFavorited = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -24,7 +31,7 @@ class AuthorCard extends StatelessWidget {
           Row(
             children: [
               CircleImage(
-                imageProvider: imageProvider,
+                imageProvider: widget.imageProvider,
                 imageRadius: 28,
               ),
               const SizedBox(width: 8),
@@ -32,11 +39,11 @@ class AuthorCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    authorName,
+                    widget.authorName,
                     style: FooderLichTheme.lightTextTheme.headline2,
                   ),
                   Text(
-                    title,
+                    widget.title,
                     style: FooderLichTheme.lightTextTheme.headline3,
                   )
                 ],
@@ -47,10 +54,13 @@ class AuthorCard extends StatelessWidget {
             onPressed: () {
               const snackBar = SnackBar(content: Text('Favorite Pressed'));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              setState(() {
+                _isFavorited = !_isFavorited;
+              });
             },
-            icon: const Icon(Icons.favorite_border),
+            icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
             iconSize: 30,
-            color: Colors.grey[400],
+            color: Colors.red[400],
           )
         ],
       ),
